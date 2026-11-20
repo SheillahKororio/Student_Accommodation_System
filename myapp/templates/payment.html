@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Accommodation Payment</h2>
+
+    <h3>{{ booking.room.hostel.hostel_name }}</h3>
+
+    <p>Room Number: {{ booking.room.room_number }}</p>
+
+    <p>
+        Amount to Pay:
+        <strong>Ksh {{ booking.room.room_price }}</strong>
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>M-Pesa Phone Number</label>
+
+        <input
+            type="text"
+            name="phone_number"
+            placeholder="2547XXXXXXXX"
+            required
+        >
+
+        <button type="submit">
+            Pay with M-Pesa
+        </button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Accommodation</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="accommodation-page">
+
+        <div class="accommodation-header">
+            <h1>Student Accommodation</h1>
+
+            <p>
+                Discover comfortable, secure and affordable
+                accommodation for students.
+            </p>
+        </div>
+
+        <div class="hostel-grid">
+
+            <!-- KINGS HOSTEL -->
+
+            <div class="hostel-card">
+
+                <img
+                    src="{% static 'images/kings-hostel.jpeg' %}"
+                    alt="Kings Hostel exterior"
+                >
+
+                <div class="hostel-card-content">
+
+                    <h2>Kings Hostel</h2>
+
+                    <p>Boys' Student Accommodation</p>
+
+                    <p>
+                        Comfortable rooms designed for four students,
+                        with double-decker beds and study spaces and single beds.
+                    </p>
+
+                    <a href="{% url 'myapp:hostel_rooms' 'kings' %}">
+                        View Kings Hostel
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUEENS HOSTEL -->
+
+            <div class="hostel-card">
+
+                <img
+                    src="{% static 'images/queens-hostel.png' %}"
+                    alt="Queens Hostel exterior"
+                >
+
+                <div class="hostel-card-content">
+
+                    <h2>Queens Hostel</h2>
+
+                    <p>Girls' Student Accommodation</p>
+
+                    <p>
+                        A welcoming student environment with
+                        four-bed,single bed rooms and dedicated study spaces.
+                    </p>
+
+                    <a href="{% url 'myapp:hostel_rooms' 'queens' %}">
+                        View Queens Hostel
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Accommodation System</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+<div class="logo">
+    <img src="{% static 'images/logo.png' %}" alt="Student Accommodation Logo", width="50" height="50">
+    <span>Student Accommodation</span>
+</div>
+
+<ul>
+    <li>
+        <a href="{% url 'myapp:home' %}">Home</a>
+    </li>
+    <li>
+        <a href="{% url 'myapp:about' %}">About</a>
+    </li>
+    <li>
+        <a href="{% url 'myapp:accommodation' %}">Accommodation</a>
+    </li>
+    <li>
+        <a href="{% url 'myapp:contact' %}">Contact</a>
+    </li>
+</ul>
+<div class="nav-buttons">
+    <a href="{% url 'myapp:login' %}" class="login-btn">
+        Login
+    </a>
+
+    <a href="{% url 'myapp:register' %}" class="register-btn">
+        Register
+    </a>
+</div>
+
+</nav>
+
+    <!-- Welcome section -->
+    <section class="hero">
+        <h1>Find Your Perfect Student Accommodation</h1>
+
+        <p>
+            Discover comfortable, secure and affordable accommodation
+            designed for students.
+        </p>
+
+        <button>Explore Accommodation</button>
+    </section>
+
+</body>
+</html>

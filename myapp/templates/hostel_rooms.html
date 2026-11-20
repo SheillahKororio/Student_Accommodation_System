@@ -1,0 +1,76 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ hostel.hostel_name }} | Student Accommodation</title>
+
+    <link rel="stylesheet" href="{% static 'css/hostel_rooms.css' %}">
+</head>
+
+<body>
+
+<header>
+    <h1>{{ hostel.hostel_name }}</h1>
+    <p>Student Accommodation Management System</p>
+</header>
+
+<div class="container">
+
+    <div class="page-heading">
+        <h2>Explore Our Rooms</h2>
+        <p>Discover our comfortable student accommodation.</p>
+    </div>
+
+    <div class="room-grid">
+
+        {% for room in rooms %}
+
+        <div class="room-card">
+
+            <div class="room-image">
+                {% if room.room_image %}
+                 <img src="{{ room.room_image.url }}" alt="Room {{ room.room_number }}">
+                {% else %}
+            <span>Room photo coming soon</span>
+            {% endif %}
+    </div>
+
+            <div class="room-details">
+
+                <h3>Room {{ room.room_number }}</h3>
+
+                <p>Four beds per room</p>
+
+                <a href="#" class="view-button">
+                    View Room
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p>No rooms have been added to this hostel yet.</p>
+
+        {% endfor %}
+
+    </div>
+
+    <a href="{% url 'myapp:accommodation' %}" class="back-button">
+        ← Back to Hostels
+    </a>
+
+</div>
+
+<footer>
+    <p>Student Accommodation Management System</p>
+</footer>
+
+</body>
+</html>

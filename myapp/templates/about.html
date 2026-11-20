@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Student Accommodation</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <h1>About Our Accommodation</h1>
+    </header>
+
+    <main>
+        <h2>Welcome to Student Accommodation Management System</h2>
+
+        <p>
+            Our system provides a convenient way for students
+            to explore and book comfortable accommodation.
+        </p>
+
+        <p>
+            We provide Kings Hostel for male students and
+            Queens Hostel for female students.
+        </p>
+
+        <p>
+            Our goal is to make student accommodation booking
+            simple, organised and accessible.
+        </p>
+
+        <a href="{% url 'myapp:accommodation' %}">
+            Explore Accommodation
+        </a>
+    </main>
+
+</body>
+</html>

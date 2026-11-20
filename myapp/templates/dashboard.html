@@ -1,0 +1,65 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="registration-container">
+
+        <h2>Student Dashboard</h2>
+
+        <h3>Welcome, {{ request.user.username }}!</h3>
+
+        <p>Welcome to the Student Accommodation Management System.</p>
+
+        <hr>
+
+        <h3>Student Information</h3>
+
+        {% if profile.profile_photo %}
+            <img src="{{ profile.profile_photo.url }}"
+                 alt="Student Photo"
+                 width="120">
+        {% endif %}
+
+        <p><strong>Username:</strong> {{ request.user.username }}</p>
+
+        <p><strong>Email:</strong> {{ request.user.email }}</p>
+
+        <p><strong>Admission Number:</strong>
+            {{ profile.admission_number }}
+        </p>
+
+        <p><strong>Phone Number:</strong>
+            {{ profile.phone_number }}
+        </p>
+
+        <p><strong>Course:</strong>
+            {{ profile.course }}
+        </p>
+
+        <hr>
+
+        <h3>Accommodation Services</h3>
+
+<p>
+    <a href="{% url 'myapp:book_room' %}">
+        Book a Room
+    </a>
+</p>
+
+<p>Room Allocation: Coming Soon</p>
+<p>Payment Status: Coming Soon</p>
+
+        <a href="{% url 'myapp:logout' %}">Logout</a>
+
+    </div>
+
+</body>
+</html>

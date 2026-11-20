@@ -1,0 +1,36 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="registration-container">
+
+        <h2>Student Registration</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h3>Account Details</h3>
+            {{ user_form.as_p }}
+
+            <h3>Student Details</h3>
+            {{ profile_form.as_p }}
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p>Already registered?
+            <a href="#">Login here</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

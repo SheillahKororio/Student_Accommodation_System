@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Accommodation</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="registration-container">
+
+        <h2>Book Student Accommodation</h2>
+
+        <p>Select your preferred room below.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Submit Booking</button>
+        </form>
+
+        <p>
+            <a href="{% url 'myapp:dashboard' %}">
+                Back to Dashboard
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>

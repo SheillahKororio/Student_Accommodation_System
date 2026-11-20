@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | Student Accommodation</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Contact Us</h1>
+        <p>Student Accommodation Management System</p>
+    </header>
+
+    <main>
+        <h2>We Are Here to Help</h2>
+
+        <p>
+            Do you have questions about our hostels,
+            room availability or booking process?
+            Feel free to contact us.
+        </p>
+
+        <h3>Our Accommodation</h3>
+
+        <p>Kings Hostel – Male Students</p>
+        <p>Queens Hostel – Female Students</p>
+
+        <h3>Contact Information</h3>
+
+        <p>Email: kororio@studentaccommodation.com</p>
+        <p>Phone: +254 719677928</p>
+
+        <a href="{% url 'myapp:accommodation' %}">
+            Explore Accommodation
+        </a>
+    </main>
+
+</body>
+</html>
