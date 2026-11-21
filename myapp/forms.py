@@ -5,9 +5,16 @@ from .models import Booking, Room, Room, StudentProfile
 
 from django.db.models import Count, Q
 
+
 from django.core.exceptions import ValidationError
 
 class StudentRegistrationForm(UserCreationForm):
+    username = forms.CharField(
+        max_length=150,
+        required=True,
+        help_text="Enter your first name or first and last name."
+    )
+
     email = forms.EmailField(required=True)
 
     class Meta:
@@ -18,6 +25,11 @@ class StudentRegistrationForm(UserCreationForm):
             'password1',
             'password2',
         ]
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        username = ''.join(username.split())
+        return username
 
 
 class StudentProfileForm(forms.ModelForm):
@@ -30,9 +42,6 @@ class StudentProfileForm(forms.ModelForm):
             'gender',
             'profile_photo',
         ]
-
-    from .models import Booking
-
 
 class BookingForm(forms.ModelForm):
     class Meta:

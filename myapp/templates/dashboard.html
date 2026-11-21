@@ -10,55 +10,67 @@
 
 <body>
 
-    <div class="registration-container">
+    <div class="dashboard-page">
+        <div class="dashboard-topbar">
+            <div class="dashboard-brand">
+                <img src="{% static 'images/logo.png' %}" alt="Student Accommodation logo">
+                <div>
+                    <h1>Student Accommodation</h1>
+                    <p>Student portal</p>
+                </div>
+            </div>
+            <a class="dashboard-logout" href="{% url 'myapp:logout' %}">Logout</a>
+        </div>
 
-        <h2>Student Dashboard</h2>
+        <section class="dashboard-welcome">
+            <p class="eyebrow">Your accommodation portal</p>
+            <h2>Welcome, {{ request.user.username }}!</h2>
+            <p>Manage your student profile and accommodation from one place.</p>
+        </section>
 
-        <h3>Welcome, {{ request.user.username }}!</h3>
+        <div class="dashboard-grid">
+            <section class="dashboard-card">
+                <h3>Student information</h3>
+                <div class="dashboard-profile">
+                    {% if profile.profile_photo %}
+                        <img src="{{ profile.profile_photo.url }}" alt="Student photo">
+                    {% else %}
+                        <span class="dashboard-profile-placeholder" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+                    {% endif %}
+                    <div>
+                        <strong>{{ request.user.username }}</strong>
+                        <span>{{ profile.course }}</span>
+                    </div>
+                </div>
+                <dl class="dashboard-details">
+                    <div>
+                        <dt>Email</dt>
+                        <dd>{{ request.user.email }}</dd>
+                    </div>
+                    <div>
+                        <dt>Admission number</dt>
+                        <dd>{{ profile.admission_number }}</dd>
+                    </div>
+                    <div>
+                        <dt>Phone number</dt>
+                        <dd>{{ profile.phone_number }}</dd>
+                    </div>
+                    <div>
+                        <dt>Course</dt>
+                        <dd>{{ profile.course }}</dd>
+                    </div>
+                </dl>
+            </section>
 
-        <p>Welcome to the Student Accommodation Management System.</p>
-
-        <hr>
-
-        <h3>Student Information</h3>
-
-        {% if profile.profile_photo %}
-            <img src="{{ profile.profile_photo.url }}"
-                 alt="Student Photo"
-                 width="120">
-        {% endif %}
-
-        <p><strong>Username:</strong> {{ request.user.username }}</p>
-
-        <p><strong>Email:</strong> {{ request.user.email }}</p>
-
-        <p><strong>Admission Number:</strong>
-            {{ profile.admission_number }}
-        </p>
-
-        <p><strong>Phone Number:</strong>
-            {{ profile.phone_number }}
-        </p>
-
-        <p><strong>Course:</strong>
-            {{ profile.course }}
-        </p>
-
-        <hr>
-
-        <h3>Accommodation Services</h3>
-
-<p>
-    <a href="{% url 'myapp:book_room' %}">
-        Book a Room
-    </a>
-</p>
-
-<p>Room Allocation: Coming Soon</p>
-<p>Payment Status: Coming Soon</p>
-
-        <a href="{% url 'myapp:logout' %}">Logout</a>
-
+            <section class="dashboard-card">
+                <h3>Accommodation services</h3>
+                <div class="dashboard-services">
+                    <a class="dashboard-service-link" href="{% url 'myapp:book_room' %}">Book a room</a>
+                    <span class="dashboard-service-note">Room allocation <span>Check Room</span></span>
+                    <span class="dashboard-service-note">Payment status <span>Make payment</span></span>
+                </div>
+            </section>
+        </div>
     </div>
 
 </body>

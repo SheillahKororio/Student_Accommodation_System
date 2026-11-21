@@ -152,3 +152,8 @@ MPESA_PASSKEY = os.getenv('MPESA_PASSKEY')
 
 MPESA_ENVIRONMENT = 'sandbox'
 MPESA_BASE_URL = 'https://sandbox.safaricom.co.ke'
+
+MPESA_CALLBACK_URL = os.getenv(
+    'MPESA_CALLBACK_URL',
+    'https://student-accommodation-system-1-wa1h.onrender.com/payment-callback/'
+)

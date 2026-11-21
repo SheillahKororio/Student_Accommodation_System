@@ -17,6 +17,7 @@ from .forms import (
 from django.shortcuts import render, get_object_or_404
 from .models import Hostel, Room, Booking, Payment
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
@@ -49,7 +50,7 @@ def register(request):
                 profile.user = user
                 profile.save()
 
-            return redirect('myapp:home')
+            return redirect('myapp:login')
 
     else:
         user_form = StudentRegistrationForm()
@@ -65,9 +66,16 @@ def register(request):
 
 def student_login(request):
     if request.method == 'POST':
+
+        login_data = request.POST.copy()
+
+        # Remove spaces from the username
+        username = login_data.get('username', '')
+        login_data['username'] = ''.join(username.split())
+
         form = AuthenticationForm(
             request,
-            data=request.POST
+            data=login_data
         )
 
         if form.is_valid():

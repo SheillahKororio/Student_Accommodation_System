@@ -53,8 +53,8 @@ def initiate_stk_push(phone_number, amount, booking_id):
         "PartyB": shortcode,
         "PhoneNumber": phone_number,
         "CallBackURL": settings.MPESA_CALLBACK_URL,
-        "AccountReference": f"Booking-{booking_id}",
-        "TransactionDesc": "Student accommodation payment"
+        "AccountReference": "Kororio Accommodation",
+        "TransactionDesc": "Accommodation Payment"  
     }
 
     response = requests.post(
