@@ -785,6 +785,22 @@ main a:hover {
 }
 
 /* Dashboard-only visual enhancements */
+.dashboard-page nav ul,
+.dashboard-page .navbar ul,
+.dashboard-page .dashboard-nav,
+.dashboard-page .dashboard-navigation {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.dashboard-page nav li,
+.dashboard-page .navbar li,
+.dashboard-page .dashboard-nav li,
+.dashboard-page .dashboard-navigation li {
+    list-style: none;
+}
+
 .dashboard-page {
     position: relative;
     min-height: calc(100vh - 102px);
