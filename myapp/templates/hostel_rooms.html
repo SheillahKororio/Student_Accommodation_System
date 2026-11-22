@@ -28,49 +28,46 @@
 
     <div class="room-grid">
 
-        {% for room in rooms %}
+       {% for room in rooms %}
+    <div class="room-card">
 
-        <div class="room-card">
+    <div class="room-image">
 
-            <div class="room-image">
-                {% if room.room_image %}
-                 <img src="{{ room.room_image.url }}" alt="Room {{ room.room_number }}">
-                {% else %}
+        {% if room.room_image %}
+            <img src="{% static 'images/rooms/' %}{{ room.room_image.name }}"
+                 alt="Room {{ room.room_number }}"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        {% endif %}
+
+        <div class="room-placeholder"
+             style="display: {% if room.room_image %}none{% else %}flex{% endif %};">
             <span>Room photo coming soon</span>
-            {% endif %}
-    </div>
-
-            <div class="room-details">
-
-                <h3>Room {{ room.room_number }}</h3>
-
-                <p>Four beds per room</p>
-
-                <a href="#" class="view-button">
-                   Ksh. 6000/Month@
-                </a>
-
-            </div>
-
         </div>
 
-        {% empty %}
-
-        <p>No rooms have been added to this hostel yet.</p>
-
-        {% endfor %}
-
     </div>
 
-    <a href="{% url 'myapp:accommodation' %}" class="back-button">
-        ← Back to Hostels
-    </a>
+    <div class="room-details">
+        <h3>Room {{ room.room_number }}</h3>
+        <p>Capacity: {{ room.room_capacity }} students</p>
+        <p>Price: Ksh. {{ room.room_price }}</p>
+
+        {% if room.is_available %}
+            <span>Available</span>
+        {% else %}
+            <span>Occupied</span>
+        {% endif %}
+    </div>
 
 </div>
 
-<footer>
-    <p>Student Accommodation Management System</p>
-</footer>
+{% empty %}
+<p>No rooms have been added to this hostel yet.</p>
+{% endfor %}
 
-</body>
-</html>
+    </div>
+
+    <p>
+        <a href="{% url 'myapp:accommodation' %}">
+            Back to Accommodation
+        </a>
+    </p>
