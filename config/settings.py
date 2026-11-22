@@ -144,14 +144,14 @@ MAILERS = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# STORAGES = {
-#    'default': {
-#        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
-#    },
-#   'staticfiles': {
-#        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
- #   },
-#}
+STORAGES = {
+   'default': {
+       'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+   },
+ 'staticfiles': {
+       'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+  },
+}
 
 LOGIN_URL = 'myapp:login'
 
@@ -169,8 +169,8 @@ MPESA_CALLBACK_URL = os.getenv(
     'https://student-accommodation-system-1-wa1h.onrender.com/payment-callback/'
 )
 
-#CLOUDINARY_STORAGE = {
-#   'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-#   'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-#   'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-#}
+CLOUDINARY_STORAGE = {
+  'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+  'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+  'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
