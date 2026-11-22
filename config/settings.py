@@ -16,6 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 from dotenv import load_dotenv
+import dj_database_url
 import os
 
 load_dotenv(BASE_DIR / '.env')
@@ -85,13 +86,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',   # used locally
+        conn_max_age=600,
+    )
+}
 
 
 # Password validation
@@ -141,15 +142,16 @@ MAILERS = {
 }
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-STORAGES = {
-    'default': {
-        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
-    },
-    'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-    },
-}
+# STORAGES = {
+#    'default': {
+#        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+#    },
+#   'staticfiles': {
+#        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+ #   },
+#}
 
 LOGIN_URL = 'myapp:login'
 
@@ -167,8 +169,8 @@ MPESA_CALLBACK_URL = os.getenv(
     'https://student-accommodation-system-1-wa1h.onrender.com/payment-callback/'
 )
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-}
+#CLOUDINARY_STORAGE = {
+#   'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+#   'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+#   'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+#}
