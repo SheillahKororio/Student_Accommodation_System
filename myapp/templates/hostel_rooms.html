@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -14,60 +13,65 @@
 
 <body>
 
-<header>
-    <h1>{{ hostel.hostel_name }}</h1>
-    <p>Student Accommodation Management System</p>
-</header>
+    <header>
+        <h1>{{ hostel.hostel_name }}</h1>
+        <p>Student Accommodation Management System</p>
+    </header>
 
-<div class="container">
+    <div class="container">
 
-    <div class="page-heading">
-        <h2>Explore Our Rooms</h2>
-        <p>Discover our comfortable student accommodation.</p>
-    </div>
-
-    <div class="room-grid">
-
-       {% for room in rooms %}
-    <div class="room-card">
-
-    <div class="room-image">
-
-        {% if room.room_image %}
-            <img src="{% static 'images/rooms/' %}{{ room.room_image.name }}"
-                 alt="Room {{ room.room_number }}"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        {% endif %}
-
-        <div class="room-placeholder"
-             style="display: {% if room.room_image %}none{% else %}flex{% endif %};">
-            <span>Room photo coming soon</span>
+        <div class="page-heading">
+            <h2>Explore Our Rooms</h2>
+            <p>Discover our comfortable student accommodation.</p>
         </div>
 
+        <div class="room-grid">
+
+            {% for room in rooms %}
+                <div class="room-card">
+
+                    <div class="room-image">
+
+                        {% if room.room_image %}
+                            <img src="{{ room.room_image.url }}"
+                                 alt="Room {{ room.room_number }}"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        {% endif %}
+
+                        <div class="room-placeholder"
+                             style="display: {% if room.room_image %}none{% else %}flex{% endif %};">
+                            <span>Room photo coming soon</span>
+                        </div>
+
+                    </div>
+
+                    <div class="room-details">
+                        <h3>Room {{ room.room_number }}</h3>
+                        <p>Capacity: {{ room.room_capacity }} students</p>
+                        <p>Price: Ksh. {{ room.room_price }}</p>
+
+                        {% if room.is_available %}
+                            <span>Available</span>
+                        {% else %}
+                            <span>Occupied</span>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            {% empty %}
+                <p>No rooms have been added to this hostel yet.</p>
+            {% endfor %}
+
+        </div>
+
+        <p>
+            <a href="{% url 'myapp:accommodation' %}">
+                Back to Accommodation
+            </a>
+        </p>
+
     </div>
 
-    <div class="room-details">
-        <h3>Room {{ room.room_number }}</h3>
-        <p>Capacity: {{ room.room_capacity }} students</p>
-        <p>Price: Ksh. {{ room.room_price }}</p>
-
-        {% if room.is_available %}
-            <span>Available</span>
-        {% else %}
-            <span>Occupied</span>
-        {% endif %}
-    </div>
-
-</div>
-
-{% empty %}
-<p>No rooms have been added to this hostel yet.</p>
-{% endfor %}
-
-    </div>
-
-    <p>
-        <a href="{% url 'myapp:accommodation' %}">
-            Back to Accommodation
-        </a>
-    </p>
+</body>
+</html>
